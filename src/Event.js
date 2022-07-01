@@ -13,8 +13,6 @@ class Event extends Component {
 
     const { event } = this.props;
     const { showDetail } = this.state;
-    console.log(event.description);
-    console.log(this.state);
     return (
       <div className='event'>
         <h4 className='summary'>{event.summary}</h4>
@@ -24,7 +22,7 @@ class Event extends Component {
 
         <button className={`buttonDetail ${showDetail ? "expanded" : "collapsed"}EventDetail`}
           onClick={() => this.handleButtonClicked()}
-        >{showDetail ? 'Show Details' : 'Hide Details'}
+        >{showDetail ? 'Hide Details' : 'Show Details'}
         </button>
 
         {

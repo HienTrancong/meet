@@ -11,7 +11,6 @@ class NumberOfEvents extends Component {
 
   render() {
     const { numberOfEvents } = this.state;
-    console.log(numberOfEvents);
     return (
       <div className='numberOfEvents'>
         <label>Specify number of events shown</label>
