@@ -2,12 +2,7 @@ import { mockData } from "./mock-data";
 import axios from "axios";
 import NProgress from "nprogress";
 
-export const extractLocations = (events) => {//takes an events array
-  var extractLocations = events.map((event) => event.location);//then uses map to create a new array with only locations.
-  var locations = [...new Set(extractLocations)];//Set will remove all duplicates from the array
-  console.log(locations);
-  return locations;
-};
+
 
 // Check token if valid
 export const checkToken = async (accessToken) => {
@@ -70,13 +65,14 @@ export const getEvents = async () => {
   const token = await getAccessToken();
 
   if (token) {
+    console.log(token);
     removeQuery();
     const url = "https://vgs1s9ofpi.execute-api.eu-central-1.amazonaws.com/dev/api/get-events" + "/" + token;
     const result = await axios.get(url);
 
     if (result.data) {
       var locations = extractLocations(result.data.events);
-      localStorage.setItem('lastEvents', JSON.stringify(result.date));
+      localStorage.setItem('lastEvents', JSON.stringify(result.data));
       localStorage.setItem('locations', JSON.stringify(locations));
     }
 
@@ -84,6 +80,13 @@ export const getEvents = async () => {
     console.log(mockData);
     return result.data.events;
   }
+};
+
+export const extractLocations = (events) => {//takes an events array
+  var extractLocations = events.map((event) => event.location);//then uses map to create a new array with only locations.
+  var locations = [...new Set(extractLocations)];//Set will remove all duplicates from the array
+  console.log(locations);
+  return locations;
 };
 
 
