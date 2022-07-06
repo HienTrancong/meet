@@ -64,20 +64,26 @@ class App extends Component {
     this.setState({
       numberOfEvents,
     });
-
+    console.log(numberOfEvents);
+    console.log(this.state.locations);
     this.updateEvents(this.state.locations, numberOfEvents);
   };
 
 
   // used in <CitySearch />
   updateEvents = (location, eventCount) => {
+    console.log(this.mounted);
+    console.log(location);
+    console.log(eventCount);
     getEvents().then((events) => {
-      const locationEvents = (location === "all") ? events : events.filter((event) => event.location === location);
-      const { numberOfEvents } = this.state;
+      const locationEvents = location === "all"
+        ? events
+        : events.filter((event) => event.location === location);
+      console.log(this.mounted);
       if (this.mounted) {
         console.log(locationEvents);
         this.setState({
-          events: locationEvents.slice(0, numberOfEvents),
+          events: locationEvents.slice(0, eventCount),
           currentLocation: location,
           numberOfEvents: eventCount,
         });
@@ -85,11 +91,12 @@ class App extends Component {
     });
   }
 
+
   render() {
     if (this.state.showWelcomeScreen === undefined) return <div className="App" />;
     console.log(this.state.numberOfEvents);
     console.log(this.state.showWelcomeScreen);
-    console.log('test');
+    console.log('test 3');
     console.log(this.state.locations);
     return (
       <div className="App">
