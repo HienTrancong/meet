@@ -19,10 +19,12 @@ class App extends Component {
   state = {
     events: [],
     locations: [],
+    currentLocation: 'all',
     numberOfEvents: 32,
     showWelcomeScreen: undefined,
   };
 
+  // To use in data visualization
   getData = () => {
     const { locations, events } = this.state;
     const data = locations.map((location) => {
@@ -35,7 +37,7 @@ class App extends Component {
 
 
   async componentDidMount() {
-    this.mounted = true;//update the state only if this.mounted is true
+    this.mounted = true;
 
     const accessToken = localStorage.getItem('access_token');
     const isTokenValid = (await checkToken(accessToken)).error ? false : true;
@@ -47,7 +49,7 @@ class App extends Component {
       getEvents().then((events) => {
         if (this.mounted) {
           this.setState({
-            events: events.slice(0, this.state.numberOfEvents),
+            events,
             locations: extractLocations(events)
           });
         }
@@ -66,7 +68,7 @@ class App extends Component {
     });
     console.log(numberOfEvents);
     console.log(this.state.locations);
-    this.updateEvents(this.state.locations, numberOfEvents);
+    this.updateEvents(this.state.currentLocation, numberOfEvents);
   };
 
 
@@ -98,6 +100,7 @@ class App extends Component {
     console.log(this.state.showWelcomeScreen);
     console.log('test 3');
     console.log(this.state.locations);
+    console.log(this.state.events);
     return (
       <div className="App">
         <h1>Welcome to Meet app!</h1>
