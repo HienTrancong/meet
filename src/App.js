@@ -69,15 +69,13 @@ class App extends Component {
   };
 
 
-
+  // used in <CitySearch />
   updateEvents = (location, eventCount) => {
     getEvents().then((events) => {
-      const locationEvents =
-        location === "all"
-          ? events
-          : events.filter((event) => event.location === location);
+      const locationEvents = (location === "all") ? events : events.filter((event) => event.location === location);
       const { numberOfEvents } = this.state;
       if (this.mounted) {
+        console.log(locationEvents);
         this.setState({
           events: locationEvents.slice(0, numberOfEvents),
           currentLocation: location,
@@ -92,6 +90,7 @@ class App extends Component {
     console.log(this.state.numberOfEvents);
     console.log(this.state.showWelcomeScreen);
     console.log('test');
+    console.log(this.state.locations);
     return (
       <div className="App">
         <h1>Welcome to Meet app!</h1>
