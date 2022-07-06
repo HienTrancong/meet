@@ -54,11 +54,13 @@ export const getEvents = async () => {
   NProgress.start();
 
   if (window.location.href.startsWith('http://localhost')) {
+    console.log(mockData);
     NProgress.done();
     return mockData;
   }
 
   if (!navigator.onLine) {
+    console.log('Im offline!');
     const data = localStorage.getItem("lastEvents");
     NProgress.done();
     return data ? JSON.parse(data).events : [];;
@@ -77,7 +79,8 @@ export const getEvents = async () => {
       localStorage.setItem('locations', JSON.stringify(locations));
     }
 
-    NProgress.done();
+    NProgress.done(result.data.events);
+    console.log(mockData);
     return result.data.events;
   }
 };

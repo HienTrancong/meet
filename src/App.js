@@ -91,6 +91,7 @@ class App extends Component {
     if (this.state.showWelcomeScreen === undefined) return <div className="App" />;
     console.log(this.state.numberOfEvents);
     console.log(this.state.showWelcomeScreen);
+    console.log('test');
     return (
       <div className="App">
         <h1>Welcome to Meet app!</h1>
