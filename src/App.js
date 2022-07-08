@@ -35,10 +35,6 @@ class App extends Component {
     return data;
   };
 
-
-
-
-
   // to update state, used in <NumberOfEvents />
   updateNumberOfEvents = (eventCount) => {
     this.setState({
@@ -80,7 +76,6 @@ class App extends Component {
       const searchParams = new URLSearchParams(window.location.search);
       const code = searchParams.get('code');
       this.setState({ showWelcomeScreen: !(code || isTokenValid) });
-
       if ((code || isTokenValid) && this.mounted) {
         getEvents().then((events) => {
           if (this.mounted) {
@@ -110,18 +105,10 @@ class App extends Component {
   }
 
 
-
-
   render() {
     const { showWelcomeScreen, locations, events } = this.state;
 
     if (showWelcomeScreen === undefined) return <div className="App" />
-
-    console.log(this.state.numberOfEvents);
-    console.log(this.state.showWelcomeScreen);
-    console.log('test 3');
-    console.log(this.state.locations);
-    console.log(this.state.events);
 
     return (
       <>
@@ -142,7 +129,7 @@ class App extends Component {
         </div>
 
         <WelcomeScreen
-          showWelcomeScreen={this.state.showWelcomeScreen}
+          showWelcomeScreen={showWelcomeScreen}
           getAccessToken={() => { getAccessToken(); }}
         />
       </>
