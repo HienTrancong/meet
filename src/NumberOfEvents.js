@@ -24,6 +24,7 @@ class NumberOfEvents extends Component {
     return (
       <div className='NumberOfEvents'>
         <label>Specify number of events shown test</label>
+        <br />
         <input
           type="number"
           value={this.state.numberOfEvents}
