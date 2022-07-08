@@ -115,8 +115,7 @@ class App extends Component {
   render() {
     const { showWelcomeScreen, locations, events } = this.state;
 
-    if (showWelcomeScreen === undefined)
-      return <div className="App" />;
+    if (showWelcomeScreen === undefined) return <div className="App" />
 
     console.log(this.state.numberOfEvents);
     console.log(this.state.showWelcomeScreen);
@@ -126,8 +125,8 @@ class App extends Component {
 
     return (
       <>
-        <div>
-          <h4>Meet app</h4>
+        <div className="App">
+          <h4>Welcome to Meet app!</h4>
           <CitySearch
             locations={locations}
             updateEvents={this.updateEvents}
@@ -136,17 +135,10 @@ class App extends Component {
           <NumberOfEvents
             updateNumberOfEvents={this.updateNumberOfEvents}
           />
-        </div>
-
-        <div className="App">
-          <h4>Welcome to Meet app!</h4>
 
           <EventList
             events={events}
           />
-
-
-
         </div>
 
         <WelcomeScreen
