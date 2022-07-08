@@ -127,11 +127,7 @@ class App extends Component {
     return (
       <>
         <div>
-
-        </div>
-
-        <div className="App">
-          <h4>Welcome to Meet app!</h4>
+          <h4>Meet app</h4>
           <CitySearch
             locations={locations}
             updateEvents={this.updateEvents}
@@ -140,17 +136,23 @@ class App extends Component {
           <NumberOfEvents
             updateNumberOfEvents={this.updateNumberOfEvents}
           />
+        </div>
+
+        <div className="App">
+          <h4>Welcome to Meet app!</h4>
 
           <EventList
             events={events}
           />
 
-          <WelcomeScreen
-            showWelcomeScreen={this.state.showWelcomeScreen}
-            getAccessToken={() => { getAccessToken(); }}
-          />
+
 
         </div>
+
+        <WelcomeScreen
+          showWelcomeScreen={this.state.showWelcomeScreen}
+          getAccessToken={() => { getAccessToken(); }}
+        />
       </>
     );
   }
