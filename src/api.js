@@ -50,7 +50,6 @@ export const getEvents = async () => {
   NProgress.start();
 
   if (window.location.href.startsWith("http://localhost")) {
-    console.log(mockData);
     NProgress.done();
     return mockData;
   }
@@ -65,7 +64,6 @@ export const getEvents = async () => {
   const token = await getAccessToken();
 
   if (token) {
-    console.log(token);
     removeQuery();
     const url = "https://vgs1s9ofpi.execute-api.eu-central-1.amazonaws.com/dev/api/get-events" + "/" + token;
     const result = await axios.get(url);
@@ -77,7 +75,6 @@ export const getEvents = async () => {
     }
 
     NProgress.done(result.data.events);
-    console.log(mockData);
     return result.data.events;
   }
 };
@@ -85,10 +82,8 @@ export const getEvents = async () => {
 export const extractLocations = (events) => {//takes an events array
   var extractLocations = events.map((event) => event.location);//then uses map to create a new array with only locations.
   var locations = [...new Set(extractLocations)];//Set will remove all duplicates from the array
-  console.log(locations);
   return locations;
 };
-
 
 export const getAccessToken = async () => {
   const accessToken = localStorage.getItem('access_token');

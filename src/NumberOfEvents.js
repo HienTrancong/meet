@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 class NumberOfEvents extends Component {
   state = {
+    numberOfEvents: 32,
     errorText: ''
   };
 
@@ -14,10 +15,11 @@ class NumberOfEvents extends Component {
         errorText: 'Enter number between 1 and 32',
       });
     } else {
-      this.props.updateNumberOfEvents(number);
       this.setState({
+        numberOfEvents: number,
         errorText: ''
       });
+      this.props.updateNumberOfEvents(number);
     }
   };
 
@@ -28,6 +30,7 @@ class NumberOfEvents extends Component {
         <br />
         <input
           type='number'
+          value={this.state.numberOfEvents}
           placeholder='Number of events to show'
           className='numberOfEventsInput'
           onChange={this.handleInputChanged}

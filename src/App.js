@@ -40,8 +40,6 @@ class App extends Component {
     this.setState({
       numberOfEvents: eventCount,
     });
-    console.log(eventCount);
-    console.log(this.state.locations);
     this.updateEvents(this.state.currentLocation, eventCount);
   };
 
