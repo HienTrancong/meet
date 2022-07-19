@@ -15,4 +15,4 @@ Given user was typing “Berlin” in the city search textbox
 And the list of suggested cities us showing
 When the user selects a city (e.g. “Berlin, Germany”) from the list
 Then their city should be changed to that city (i.e. “Berlins, Germany”) 
-And user should receive a list of upcoming events in that city. 
+And user should receive a list of upcoming events in that city.
