@@ -3,7 +3,10 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
+import * as atatus from 'atatus-spa';
 import reportWebVitals from './reportWebVitals';
+
+atatus.config('371874251e0b45c4a24497fdf7a1b4f2').install();
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -21,3 +24,5 @@ serviceWorkerRegistration.unregister();
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+
+atatus.notify(new Error('Test Atatus Setup'));
