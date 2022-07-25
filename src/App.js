@@ -13,6 +13,8 @@ import WelcomeScreen from './WelcomeScreen';
 //Import api functions to extract locations and get events
 import { extractLocations, getEvents, checkToken, getAccessToken } from './api';
 
+import { OfflineAlert } from './Alert';
+
 
 class App extends Component {
 
@@ -21,7 +23,8 @@ class App extends Component {
     locations: [],
     currentLocation: 'all',
     numberOfEvents: 32,
-    showWelcomeScreen: undefined
+    showWelcomeScreen: undefined,
+    offlineAlert: ''
   };
 
   // To use in data visualization
@@ -84,6 +87,17 @@ class App extends Component {
           }
         });
       }
+    } else if (!navigator.onLine) {
+      getEvents().then((events) => {
+        if (this.mounted) {
+          this.setState({
+            events,
+            locations: extractLocations(events),
+            showWelcomeScreen: false,
+            offlineAlert: 'You are offline, data may be not updated.'
+          });
+        }
+      });
     } else {
       getEvents().then((events) => {
         if (this.mounted) {
@@ -91,6 +105,7 @@ class App extends Component {
             events,
             locations: extractLocations(events),
             showWelcomeScreen: false
+
           });
         }
       });
@@ -111,6 +126,7 @@ class App extends Component {
     return (
       <>
         <div className="App">
+          <OfflineAlert text={this.state.offlineAlert} />
           <h4>Welcome to Meet app!</h4>
           <CitySearch
             locations={locations}
