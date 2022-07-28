@@ -94,7 +94,7 @@ class App extends Component {
             events,
             locations: extractLocations(events),
             showWelcomeScreen: false,
-            offlineAlert: 'You are offline, data may be not updated.'
+            offlineAlert: 'You are offline, data may be not updated',
           });
         }
       });
