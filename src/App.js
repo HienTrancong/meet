@@ -183,7 +183,7 @@ class App extends Component {
 
   render() {
     const { numberOfEvents, locations, events, tokenCheck } = this.state;
-
+    console.log('here');
     // if (showWelcomeScreen === undefined) return <div className="App" />
 
     return tokenCheck === false ? (
