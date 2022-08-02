@@ -23,7 +23,7 @@ class App extends Component {
     locations: [],
     currentLocation: 'all',
     numberOfEvents: 32,
-    showWelcomeScreen: undefined,
+    // showWelcomeScreen: undefined,
     offlineAlert: '',
     tokenCheck: false
   };
@@ -183,17 +183,13 @@ class App extends Component {
 
   render() {
     const { numberOfEvents, locations, events, tokenCheck } = this.state;
-    console.log('here');
     // if (showWelcomeScreen === undefined) return <div className="App" />
-
     return tokenCheck === false ? (
       <div className="App">
-        <WelcomeScreen
-          getAccessToken={() => { getAccessToken(); }} />
+        <WelcomeScreen />
       </div>
     ) : (
       <div className="App">
-        <OfflineAlert text={this.state.offlineAlert} />
         <h4>Welcome to Meet app!</h4>
 
         <CitySearch
@@ -209,11 +205,6 @@ class App extends Component {
         <EventList
           events={events}
         />
-
-        {/* <WelcomeScreen
-          showWelcomeScreen={showWelcomeScreen}
-          getAccessToken={() => { getAccessToken(); }}
-        /> */}
       </div>
     );
   }
