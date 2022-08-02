@@ -94,7 +94,7 @@ describe('<App /> integration', () => {
     AppWrapper.setState({ showWelcomeScreen: false });
     const NumberOfEventsWrapper = AppWrapper.find(NumberOfEvents);
     const typedNumber = 2;
-    NumberOfEventsWrapper.find('.numberOfEventsInput').simulate('change', { target: { value: typedNumber } });
+    NumberOfEventsWrapper.find('.numberOfEvents__input').simulate('change', { target: { value: typedNumber } });
     const allEvents = await getEvents();
     const eventToShow = allEvents.slice(0, typedNumber);
     expect(AppWrapper.state('events')).toEqual(eventToShow);
@@ -105,7 +105,7 @@ describe('<App /> integration', () => {
     const AppWrapper = mount(<App />);
     AppWrapper.setState({ showWelcomeScreen: false });
     const NumberOfEventsWrapper = AppWrapper.find(NumberOfEvents);
-    NumberOfEventsWrapper.find('.numberOfEventsInput').simulate('change', { target: { value: '' } });
+    NumberOfEventsWrapper.find('.numberOfEvents__input').simulate('change', { target: { value: '' } });
     const allEvents = await getEvents();
     expect(AppWrapper.state('events')).toEqual(allEvents);
     AppWrapper.unmount();

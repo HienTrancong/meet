@@ -31,7 +31,7 @@ defineFeature(feature, test => {
 
     when('user change number in Number of Event text box to a new number', () => {
       AppWrapper.update();
-      AppWrapper.find('.numberOfEventsInput').simulate('change', { target: { value: 15 } });
+      AppWrapper.find('.numberOfEvents__input').simulate('change', { target: { value: 15 } });
     });
 
     then('number of events on events list should be changed to number the user specifies', () => {
