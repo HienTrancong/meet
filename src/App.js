@@ -186,7 +186,8 @@ class App extends Component {
     // if (showWelcomeScreen === undefined) return <div className="App" />
     return tokenCheck === false ? (
       <div className="App">
-        <WelcomeScreen />
+        <WelcomeScreen
+          getAccessToken={() => { getAccessToken(); }} />
       </div>
     ) : (
       <div className="App">
