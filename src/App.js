@@ -69,49 +69,66 @@ class App extends Component {
     }));
   }
 
+  // async componentDidMount() {
+  //   this.mounted = true;
+  //   if (navigator.onLine && !window.location.href.startsWith('http://localhost')) {
+  //     const accessToken = localStorage.getItem('access_token');
+  //     const isTokenValid = (await checkToken(accessToken)).error ? false : true;
+  //     const searchParams = new URLSearchParams(window.location.search);
+  //     const code = searchParams.get('code');
+  //     this.setState({ showWelcomeScreen: !(code || isTokenValid) });
+  //     if ((code || isTokenValid) && this.mounted) {
+  //       getEvents().then((events) => {
+  //         if (this.mounted) {
+  //           this.setState({
+  //             events,
+  //             locations: extractLocations(events),
+  //           });
+  //         }
+  //       });
+  //     }
+  //   } else if (!navigator.onLine) {
+  //     getEvents().then((events) => {
+  //       if (this.mounted) {
+  //         this.setState({
+  //           events,
+  //           locations: extractLocations(events),
+  //           showWelcomeScreen: false,
+  //           offlineAlert: 'You are offline, data may be not updated',
+  //         });
+  //       }
+  //     });
+  //   } else {
+  //     getEvents().then((events) => {
+  //       if (this.mounted) {
+  //         this.setState({
+  //           events,
+  //           locations: extractLocations(events),
+  //           showWelcomeScreen: false
+
+  //         });
+  //       }
+  //     });
+  //   }
+  // }
+
+  // Verifying document codes
   async componentDidMount() {
     this.mounted = true;
-    if (navigator.onLine && !window.location.href.startsWith('http://localhost')) {
-      const accessToken = localStorage.getItem('access_token');
-      const isTokenValid = (await checkToken(accessToken)).error ? false : true;
-      const searchParams = new URLSearchParams(window.location.search);
-      const code = searchParams.get('code');
-      this.setState({ showWelcomeScreen: !(code || isTokenValid) });
-      if ((code || isTokenValid) && this.mounted) {
-        getEvents().then((events) => {
-          if (this.mounted) {
-            this.setState({
-              events,
-              locations: extractLocations(events),
-            });
-          }
-        });
-      }
-    } else if (!navigator.onLine) {
+    const accessToken = localStorage.getItem('access_token');
+    const isTokenValid = (await checkToken(accessToken)).error ? false :
+      true;
+    const searchParams = new URLSearchParams(window.location.search);
+    const code = searchParams.get("code");
+    this.setState({ showWelcomeScreen: !(code || isTokenValid) });
+    if ((code || isTokenValid) && this.mounted) {
       getEvents().then((events) => {
         if (this.mounted) {
-          this.setState({
-            events,
-            locations: extractLocations(events),
-            showWelcomeScreen: false,
-            offlineAlert: 'You are offline, data may be not updated',
-          });
-        }
-      });
-    } else {
-      getEvents().then((events) => {
-        if (this.mounted) {
-          this.setState({
-            events,
-            locations: extractLocations(events),
-            showWelcomeScreen: false
-
-          });
+          this.setState({ events, locations: extractLocations(events) });
         }
       });
     }
   }
-
 
   componentWillUnmount() {
     this.mounted = false;
