@@ -124,29 +124,27 @@ class App extends Component {
     if (showWelcomeScreen === undefined) return <div className="App" />
 
     return (
-      <>
-        <div className="App">
-          <OfflineAlert text={this.state.offlineAlert} />
-          <h4>Welcome to Meet app!</h4>
-          <CitySearch
-            locations={locations}
-            updateEvents={this.updateEvents}
-          />
+      <div className="App">
+        <OfflineAlert text={this.state.offlineAlert} />
+        <h4>Welcome to Meet app!</h4>
+        <CitySearch
+          locations={locations}
+          updateEvents={this.updateEvents}
+        />
 
-          <NumberOfEvents
-            updateNumberOfEvents={this.updateNumberOfEvents}
-          />
+        <NumberOfEvents
+          updateNumberOfEvents={this.updateNumberOfEvents}
+        />
 
-          <EventList
-            events={events}
-          />
-        </div>
+        <EventList
+          events={events}
+        />
 
         <WelcomeScreen
           showWelcomeScreen={showWelcomeScreen}
-          getAccessToken={() => { getAccessToken(); }}
+          getAccessToken={() => { getAccessToken() }}
         />
-      </>
+      </div>
     );
   }
 }
