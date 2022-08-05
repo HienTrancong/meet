@@ -1,5 +1,7 @@
 .WelcomeScreen {
   position: fixed;
+  margin: 0;
+  padding: 0;
   width: 100%;
   height: 100%;
   top: 0;
@@ -43,7 +45,7 @@
   height: 40px;
   border-radius: 2px;
   background-color: #fff;
-  }
+}
 
 .google-icon {
   position: absolute;
@@ -63,4 +65,8 @@
   width: 80%;
   height: 100%;
   text-align: center;
+}
+
+button {
+  border: none;
 }
