@@ -31,7 +31,7 @@ class App extends Component {
 
   // To use in data visualization
   getData = () => {
-    const { locations, events } = this.state;
+    let { locations, events } = this.state;
     const data = locations.map((location) => {
       const number = events.filter((event) => event.location === location).length
       const city = location.split(', ').shift()
@@ -144,8 +144,8 @@ class App extends Component {
 
     return (
       <div className="App">
-        <OfflineAlert text={this.state.offlineAlert} />
-        <h4>Welcome to Meet app!</h4>
+
+        <h3>The Meet app</h3>
         <CitySearch
           locations={locations}
           updateEvents={this.updateEvents}
@@ -154,10 +154,10 @@ class App extends Component {
         <NumberOfEvents
           updateNumberOfEvents={this.updateNumberOfEvents}
         />
+        <OfflineAlert text={this.state.offlineAlert} />
+        <h4>Events information visualization</h4>
         <div className="data-vis-wrapper">
-          <EventGenre events={events}
-          />
-
+          <EventGenre events={events} />
           <ResponsiveContainer height={400}>
             <ScatterChart margin={{ top: 20, right: 20, bottom: 10, left: 10 }}>
               <CartesianGrid strokeDasharray="3 3" />

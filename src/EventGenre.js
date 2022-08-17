@@ -42,7 +42,7 @@ const EventGenre = ({ events }) => {
         </Pie>
       </PieChart>
     </ResponsiveContainer>
-  );
+  )
 }
 
 export default EventGenre;
