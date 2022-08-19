@@ -155,6 +155,7 @@ class App extends Component {
           updateNumberOfEvents={this.updateNumberOfEvents}
         />
         <OfflineAlert text={this.state.offlineAlert} />
+
         <h4>Events information visualization</h4>
         <div className="data-vis-wrapper">
           <EventGenre events={events} />
@@ -167,7 +168,6 @@ class App extends Component {
               <Scatter data={this.getData()} fill="#8884d8" />
             </ScatterChart>
           </ResponsiveContainer>
-
         </div>
 
         <EventList

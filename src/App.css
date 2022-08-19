@@ -2,10 +2,12 @@
 .App {
   text-align: center;
   padding: 2% 5%;
+  background-color:#ffffff ;
 }
 
 .App * {
   box-sizing: border-box;
+  
 }
 
 ul {
@@ -38,6 +40,22 @@ input[type="number"] {
 
 .city {
   width: 250px;
+}
+
+.event {
+  background-color:#9BB7D4;
+  opacity: 0.7;
+  border-radius: 5px;
+}
+
+.data-vis-wrapper {
+  border:rgba(0, 0, 0, 0.75);
+  padding: 2% 5%;
+}
+
+.EventGenre * {
+  border:rgba(0, 0, 0, 0.75);
+  padding: 2% 5%;
 }
 
 .CitySearch {
@@ -85,14 +103,22 @@ input[type="number"] {
   position: relative;
 }
 
-.details-btn {
-  position: absolute;
+.buttonDetail {
+  position: absolute; 
   right: 5px;
   bottom: 5px;
   padding: 5px 8px;
   border-radius: 4px;
   outline: none;
   cursor: pointer;
+}
+
+.buttonDetail:hover,
+.buttonDetail:focus
+  {
+  cursor: pointer;
+  opacity: 0.7;
+  text-decoration: none;
 }
 
 .name {
